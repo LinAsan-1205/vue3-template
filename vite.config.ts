@@ -26,7 +26,13 @@ export default ({ mode }: UserConfig) => {
 			vue(),
 			vueJsx(),
 			AutoImport({
-				imports: ['vue', 'vue-router'],
+				imports: [
+					'vue',
+					'vue-router',
+					{
+						'@vueuse/core': ['useLocalStorage', 'useCssVar'],
+					},
+				],
 			}),
 			WindiCSS(),
 			createSvgIconsPlugin({
