@@ -1,5 +1,5 @@
 export { default as request, useRequest } from './request';
 
-export * from './catch';
+export * from './cache';
 
 export * from './utils';
