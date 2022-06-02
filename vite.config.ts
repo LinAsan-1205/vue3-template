@@ -3,9 +3,10 @@ import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
-import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 
 import { createSvgIconsPlugin } from 'vite-plugin-svg-icons';
+import Icons from 'unplugin-icons/vite';
+import IconsResolver from 'unplugin-icons/resolver';
 import viteCompression from 'vite-plugin-compression';
 import VueSetupExtend from 'vite-plugin-vue-setup-extend';
 
@@ -35,13 +36,16 @@ export default ({ mode }: UserConfig) => {
 				],
 			}),
 			WindiCSS(),
+			Icons({
+				autoInstall: true,
+			}),
 			createSvgIconsPlugin({
 				iconDirs: [resolve(process.cwd(), 'src/assets/icons')],
 				symbolId: 'icon-[dir]-[name]',
 			}),
 			Components({
 				dts: true,
-				resolvers: [ElementPlusResolver()],
+				resolvers: [IconsResolver()],
 			}),
 			VueSetupExtend(),
 			viteCompression(),
